@@ -1,0 +1,9 @@
+{
+    "database" : {
+        "name" : "expense-tracker",
+        "user" : "root",
+        "password" : "",
+        "dialect" : "mysql",
+        "host" : "127.0.0.1"
+    }
+}

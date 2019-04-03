@@ -1,0 +1,47 @@
+<form [formGroup]="registerForm" class="register-form" (ngSubmit)="onSubmit()">
+  <div class="text-center">
+    <h3 class="header">Your Expense Tracker</h3>
+  </div>
+  <div class="p-4">
+    <div class="form-group">
+      <input type="text" formControlName="firstName" placeholder="First name" class="form-control" [ngClass]="{'is-invalid' : submitted && con.firstName.errors}">
+      <div *ngIf="submitted && con.firstName.errors" class="invalied-feedback"> 
+        <div ngIf="con.firstName.errors.required">First name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="lastName" placeholder="Last name" class="form-control" [ngClass]="{'is-invalid' : submitted && con.lastName.errors}">
+      <div *ngIf="submitted && con.lastName.errors" class="invalid-feedback">
+        <div *ngIf="con.lastName.errors.required">Last name is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="mail" placeholder="Email" class="form-control" [ngClass]="{'is-invalid' : submitted && con.mail.errors}">
+      <div *ngIf="submitted && con.mail.errors" class="invalid-feedback"> 
+        <div *ngIf="con.mail.errors.required">Email is required.</div>
+        <div *ngIf="con.mail.errors.email">Email is not correct.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="text" formControlName="username" placeholder="Username" class="form-control" [ngClass]="{'is-invalid' : submitted && con.username.errors}">
+      <div *ngIf="submitted && con.username.errors" class="invalid-feedback"> 
+        <div *ngIf="con.username.errors.required">Username is required.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <input type="password" formControlName="password" placeholder="Password" class="form-control" [ngClass]="{'is-invalid' : submitted && con.password.errors}">
+      <div *ngIf="submitted && con.password.errors" class="invalid-feedback"> 
+        <div *ngIf="con.password.errors.required">Password is required.</div>
+        <div *ngIf="con.password.errors.minlength">Password must be at least 6 characters.</div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button class="my-button">Register</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,63 @@
+<div class="w-100 my-div">
+  <div>
+    <p class="header">All expenses and incomes</p>
+  </div>
+  <app-alert></app-alert>
+  <div class="w-100">
+    <div class="w-100 expense-div" *ngFor="let expense of expenses">
+      <div  [className]="expense && expense.type === 'expense' ? 'my-table-expense' : 'my-table-income'">
+        <table>
+          <tbody class="w-100">
+            <tr>
+              <td class="my-header">Amount</td>
+            </tr>
+            <tr>
+              <td *ngIf="expense && expense.type=== 'expense'">-{{expense.amount}}</td>
+              <td *ngIf="expense && expense.type=== 'income'">+{{expense.amount}}</td>
+            </tr>
+            <tr>
+              <td class="my-header">Expense Date</td>
+            </tr>
+            <tr>
+              <td>{{expense.date | date : "fullDate"}}</td>
+            </tr>
+            <tr>
+              <td class="my-header">Description</td>
+            </tr>
+            <tr>
+              <td>{{expense.description}}</td>
+            </tr>
+            <tr>
+              <td class="my-header">Category</td>
+            </tr>
+            <tr>
+              <td>{{expense.category.name}} ({{expense.category.description}})</td>
+            </tr>
+         </tbody>
+        </table>
+        <div class="container mb-1">
+          <div class="row">
+            <div class="col-12 mt-1 text-left ml-1">
+              <button routerLink="/editExpense/{{expense.id}}" class="my-button-sm">Edit</button>
+              <button class="my-button-sm ml-1" (click)="deleteNote(expense.id)">Delete</button>
+            </div>
+          </div>
+          <div class="row">
+            <form [formGroup]="noteForm.length > 0 ? noteForm[expense.index] : nf" class="col-12" (ngSubmit)="submit(expense.id, expense.index)">
+              <div class="container">
+                <div class="row">
+                  <div class="col-10 mt-1">
+                    <textarea formControlName="note" class="w-100"></textarea>
+                  </div>
+                  <div class="col-2 mt-1">
+                    <button class="my-button-sm w-100" >Save note</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

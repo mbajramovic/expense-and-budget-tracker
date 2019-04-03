@@ -1,0 +1,48 @@
+<div  class="home-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-2 left" >
+        <div>
+          <p class="header">Your Expense Tracker</p>
+        </div>
+        <ul class="p-0 m-0"> 
+          <li>
+            <ul class="p-0">
+              <li class="li-header text-left">Expenses and incomes</li>
+              <li>
+                <a routerLink="/expenses">All expenses and incomes</a>
+                <a routerLink="/newExpense">New expense or income</a>
+              </li>
+            </ul>
+          </li>
+          <li>
+            <ul class="p-0">
+              <li class="li-header text-left">Categories</li>
+              <li>
+                <a routerLink="/newCategory">New category</a>
+              </li>
+            </ul>
+          </li>
+          <li class="line mt-1">
+            <a (click)="logout()">Logout</a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-8 my-div">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-2 my-col">
+        <ul class="p-0 light">
+          <li class="li-header text-left">First name:</li>
+          <li class="ml-1">{{currentUser.firstName}}</li>
+          <li class="li-header text-left">Last name:</li>
+          <li class="ml-1">{{currentUser.lastName}}</li>
+          <li class="li-header text-left">Email:</li>
+          <li class="ml-1">{{currentUser.mail}}</li>
+          <li class="li-header text-left">Username:</li>
+          <li class="ml-1">{{currentUser.username}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

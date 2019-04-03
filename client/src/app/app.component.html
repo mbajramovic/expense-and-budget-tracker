@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="row">
+        <div *ngIf="!currentUser" class="col-3 my-col">
+        </div>
+        <div *ngIf="!currentUser" class="col-2"></div>
+        <div *ngIf="!currentUser" class="col text-center">
+            <div class="mt-2">
+            <app-alert></app-alert>
+            </div>
+
+            <router-outlet></router-outlet>
+        </div>
+        <div *ngIf="!currentUser" class="col-2"></div>
+        <div *ngIf="currentUser" class="col-12 ">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

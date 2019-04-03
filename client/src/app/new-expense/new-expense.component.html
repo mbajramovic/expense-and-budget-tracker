@@ -1,0 +1,51 @@
+<form [formGroup]="expenseForm" class="expense-form" (ngSubmit)="onSubmit()">
+    <div>
+        <p class="header text-left">New Expense or Income</p>
+    </div>
+    <app-alert></app-alert>
+    <div *ngIf="!disabled">
+        <div class="form-group">
+            <input type="text" formControlName="amount" class="form-control" placeholder="Amount" [ngClass]="{'is-invalid' : submitted && con.amount.errors}">
+            <div *ngIf="submitted && con.amount.errors" class="invalid-feedback">
+                <div *ngIf="con.amount.errors.pattern">Amount is invalid.</div>
+                <div *ngIf="con.amount.errors.required">Amount is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <textarea type="text" formControlName="description" class="form-control" placeholder="Description (max 250 characters)" [ngClass]="{'is-invalid' : submitted && con.description.errors}"></textarea>
+            <div *ngIf="submitted && con.description.errors" class="invalid-feedback">
+                <div *ngIf="con.description.errors.maxlength">Description is too large (max 250 characters).</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Expense Date:</label>
+            <input type="date" id="date" formControlName="date" class="form-control" [ngClass]="{'is-invalid' : submitted && con.date.errors}">
+            <div *ngIf="submitted && con.date.errors" class="invalid-feedback">
+                <div *ngIf="con.date.errors.required">Date is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="type">Type:</label>
+            <select [(ngModel)]="type" [ngModelOptions]="{standalone: true}" id="type" class="form-control form-control-sm" (change)="typeUpdate($event.target.value)" >
+                <option value="expense"> Expense</option>
+                <option value="income"> Income</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="category">Category:</label>
+            <select [(ngModel)]="categoryId"  [ngModelOptions]="{standalone: true}" id="category" class="form-control form-control-sm" (change)="categoryUpdate($event.target.value)">
+                <option  value={{category.id}} *ngFor="let category of categories">{{category.name}}</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <button *ngIf="expense == null || isNew" class="my-button">Add expense/income</button>
+            <button *ngIf="expense != null && !isNew" class="my-button">Save changes</button>
+
+        </div>
+    </div>
+</form>

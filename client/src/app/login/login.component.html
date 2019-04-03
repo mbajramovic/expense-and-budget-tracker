@@ -1,0 +1,25 @@
+<form [formGroup]="loginForm" class="login-form" (ngSubmit)="onSubmit()" >
+    <div class="text-center">
+        <h3 class="header">Your Expense Tracker</h3>
+    </div>
+    <div class="p-4">
+        <div class="form-group">
+            <input type="text" class="form-control" formControlName="username" placeholder="Username" [ngClass]="{'is-invalid' : submitted && con.username.errors}"> 
+            <div *ngIf="submitted && con.username.errors" class="invalid-feedback">
+                <div *ngIf="con.username.errors.required">Username is required.</div>
+            </div>
+        </div>
+        
+        <div class="form-group">
+            <input type="password" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{'is-invalid': submitted && con.password.errors}">
+            <div *ngIf="submitted && con.password.errors" class="invalid-feedback">
+                <div *ngIf="con.password.errors.required">Password is required.</div>
+            </div>
+        </div>
+
+        <div class="form-group mt-2 text-center">
+            <button class="my-button">Login</button>
+            <a class="mt-2 my-a" routerLink="/register">Don't have an account yet? Register now!</a>
+        </div>
+    </div>
+</form>

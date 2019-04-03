@@ -1,0 +1,39 @@
+.my-table-expense {
+    border-bottom: 1px solid red;
+}
+
+.my-table-income {
+    border-bottom: 1px solid green;
+}
+
+.my-table-expense, .my-table-income {
+    margin-bottom: 2%;
+    width: 100%;
+    border-radius: 12px;
+}
+
+td {
+    text-align: left;
+}
+
+.my-div {
+    overflow: scroll;
+    max-height: 100%;
+}
+
+.my-header {
+    font-weight: bold;
+    color: #990000;
+}
+
+.my-button-sm {
+    background: transparent;
+    border-radius: 12px;
+    border: 1px solid #990000;
+    width: 20%;
+}
+
+.expense-div {
+    background-color :  #ffe6e6;
+    border-radius: 12px;
+}
